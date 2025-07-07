@@ -8,7 +8,7 @@ df = pd.read_csv("foxhole_war_data.csv")
 overall_avg = df.groupby("Winner")["Days"].mean()
 
 # Filter for wars after War 100
-post_100_df = df[df["War"] > 105]
+post_100_df = df[df["War"] > 108]
 post_100_avg = post_100_df.groupby("Winner")["Days"].mean()
 
 # Output the results
@@ -16,7 +16,7 @@ print("📊 Average Days to Win by Faction (All Wars):")
 for faction, days in overall_avg.items():
     print(f"{faction}: {days:.2f} days")
 
-print("\n📊 Average Days to Win by Faction (Wars After #106):")
+print("\n📊 Average Days to Win by Faction (Wars After #108):")
 for faction, days in post_100_avg.items():
     print(f"{faction}: {days:.2f} days")
 
@@ -27,16 +27,16 @@ for faction, days in post_100_avg.items():
 
 
 # === Filter Wars Lasting More Than 20 Days ===
-wars_over_20_days = df[df["Days"] > 30]
+wars_over_20_days = df[df["Days"] > 20]
 
 
 
 # === Filter Wars > 20 Days AND War Number > 100 ===
-filtered_df = df[(df["Days"] > 20) & (df["War"] > 100)]
+filtered_df = df[(df["Days"] > 25) & (df["War"] > 108)]
 
 # === Count Wins by Faction ===
 win_counts = filtered_df["Winner"].value_counts().reset_index()
-win_counts.columns = ["Faction", "Wins (War > 100 and Days > 20)"]
+win_counts.columns = ["Faction", "Wins (War > 108 and Days > 25)"]
 
 # === Display Results ===
 print("Number of Wars Won by Faction (War > 100 and Days > 20):\n")
